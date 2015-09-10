@@ -1,0 +1,91 @@
+svg {
+    background-color: #FFF;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+svg:not(.active):not(.ctrl) {
+    cursor: crosshair;
+}
+
+path.link {
+    fill: none;
+    stroke: #000;
+    stroke-width: 4px;
+    cursor: default;
+}
+
+svg:not(.active):not(.ctrl) path.link {
+    cursor: pointer;
+}
+
+path.link.selected {
+    stroke-dasharray: 10,2;
+}
+
+path.link.dragline {
+    pointer-events: none;
+}
+
+path.link.hidden {
+    stroke-width: 0;
+}
+
+circle.node {
+    stroke-width: 1px;
+    cursor: pointer;
+}
+
+circle.node.reflexive {
+    stroke: #000 !important;
+    stroke-width: 1px;
+}
+
+text {
+    font: 12px sans-serif;
+    pointer-events: none;
+}
+
+text.id {
+    text-anchor: middle;
+    font-weight: bold;
+}
+/* This sets the color for 'TK' nodes to a light blue green. */
+g.type-TK > rect {
+    fill: #00ffd0;
+}
+
+text {
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 14px;
+}
+
+.node rect {
+    stroke: #999;
+}
+
+.node.selected  rect {
+    fill: cornsilk;
+}
+.node.default rect {
+    fill: #f7f7f7;
+}
+.node.default text tspan {
+    /*fill: white;*/
+}
+
+.edgePath path {
+    stroke: #333;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+#input-parse-tree-string {
+    height: 200px;
+    font-family: monospace !important;
+}

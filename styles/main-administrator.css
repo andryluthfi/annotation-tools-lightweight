@@ -1,0 +1,89 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19 Apr 14, 23:42:22
+    Author     : Andry Luthfi
+*/
+
+/* Classes, Tools, Template
+**/
+.mini-login-wrapper , .mini-wrapper{
+    padding: 20px;
+    width: 220px;
+}
+.padded-horizontal-most {
+    padding: 10px 50px;
+}
+.padded-vertical-most{
+    padding: 50px 10px ;
+}
+.center-wrapper {
+    padding: 130px 0px ;
+}
+
+.font-larger {
+    font-size: larger;
+}
+.font-x-large {
+    font-size: x-large;
+}
+.font-xx-large {
+    font-size: xx-large;
+}
+.font-smaller {
+    font-size: smaller;
+}
+.font-x-small {
+    font-size: x-small;
+}
+.font-xx-small {
+    font-size: xx-small;
+}
+
+.line-close {
+    line-height: 1 !important;
+}
+
+.btn-updated {
+    background-image: url('../images/loader.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.animate-show{
+    opacity: 0;
+    height: 0px;
+}
+
+/* Main Customization
+**/
+article div.container-fluid {
+    min-height: 700px;
+}
+.list-group-item.active {
+    background-color: rgba(76, 158, 205, 0.4);
+    background: rgba(76, 158, 205, 0.4);
+    color: rgba(76, 158, 205, 0.4);
+}
+.list-group-item a {
+    color: black;
+}
+.list-group-item a:hover {
+    text-decoration: none;
+}
+.panel-body.reduced-panel-body {
+    padding:  5px 15px;
+}
+.panel-body.reduced-panel-body a {
+    color:#333333;
+}
+.panel-body.reduced-panel-body:hover a{
+    color: white !important;
+    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.2s; /* Safari */
+}
+.panel-body.reduced-panel-body:hover{ 
+    background: #4582ec;
+}

